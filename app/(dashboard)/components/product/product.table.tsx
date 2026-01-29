@@ -33,10 +33,14 @@ const ProductTable = ({ products, onDelete, onEdit }: TProductTableProps) => {
                 <div className="flex gap-2 items-center">
                   <div className="aspect-square bg-gray-100 rounded-md">
                     <Image
-                      src={getImageUrl(data.imageUrl)}
+                      src={
+                        data.imageUrl
+                          ? getImageUrl(data.imageUrl)
+                          : "/images/payment-proof-dummy.png"
+                      }
                       width={52}
                       height={52}
-                      alt={data.name}
+                      alt={data.name || "Product Image"} 
                       className="aspect-square object-contain"
                     />
                   </div>
@@ -45,7 +49,7 @@ const ProductTable = ({ products, onDelete, onEdit }: TProductTableProps) => {
               </td>
               <td className="px-6 py-4 font-medium">
                 <div className="rounded-md bg-gray-200 px-2 py-1 w-fit">
-                  {data.category.name}
+                  {data.category?.name}
                 </div>
               </td>
               <td className="px-6 py-4 font-medium">
